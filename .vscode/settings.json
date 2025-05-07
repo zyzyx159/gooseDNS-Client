@@ -1,3 +1,15 @@
 {
-  "cSpell.words": ["goosedns", "paramiko", "pkey", "pyyaml"]
+  "cSpell.words": [
+    "adduser",
+    "appuser",
+    "gecos",
+    "goosedns",
+    "nologin",
+    "paramiko",
+    "pkey",
+    "PYTHONDONTWRITEBYTECODE",
+    "PYTHONUNBUFFERED",
+    "pyyaml",
+    "uvicorn"
+  ]
 }
