@@ -48,7 +48,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 # RUN mkdir -p /var/run/cron && \
 #     chown -R clean:clean /var/run/cron
 
-RUN echo "*/5 * * * * python /app/main.py >> /app/cron.log 2>&1" > /etc/cron.d/clean-cron
+RUN echo "*/5 * * * * python3 /app/main.py >> /app/cron.log 2>&1" > /etc/cron.d/clean-cron
 RUN chmod 0644 /etc/cron.d/clean-cron
 RUN crontab /etc/cron.d/clean-cron
 CMD ["cron", "-f"]
