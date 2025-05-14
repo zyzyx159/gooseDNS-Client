@@ -40,9 +40,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt
 
-RUN echo "*/5 * * * * python /app/main.py >> /app/cron.log 2>&1" > /etc/cron.d/main.py
-RUN chmod 0644 /etc/cron.d/main.py
-RUN crontab /etc/cron.d/main.py
+# Create cron directories and permissions
+RUN mkdir -p /home/clean/cron && \
+    chown -R clean:clean /home/clean/cron
+
+RUN echo "*/5 * * * * python /app/main.py >> /app/cron.log 2>&1" > /etc/cron.d/clean-cron
+RUN chmod 0644 /etc/cron.d/clean-cron
+RUN crontab /etc/cron.d/clean-cron
 CMD ["cron", "-f"]
 
 # Switch to the non-privileged user to run the application.
