@@ -44,6 +44,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 RUN mkdir -p /home/clean/cron && \
     chown -R clean:clean /home/clean/cron
 
+# Create a directory for the PID file and set permissions
+RUN mkdir -p /var/run/cron && \
+    chown -R clean:clean /var/run/cron
+
 RUN echo "*/5 * * * * python /app/main.py >> /app/cron.log 2>&1" > /etc/cron.d/clean-cron
 RUN chmod 0644 /etc/cron.d/clean-cron
 RUN crontab /etc/cron.d/clean-cron
