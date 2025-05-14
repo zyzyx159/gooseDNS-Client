@@ -1,5 +1,5 @@
 host: barqu.xyz
-output: /home/clean/settings.yml
+output: /home/zyzyx/settings.yml
 sourceURL: http://barqu.xyz:8000
-userName: clean
-wanIP:
+userName: zyzyx
+wanIP: 70.178.177.175
