@@ -59,7 +59,7 @@ def pushUpdate(settingsDict):
             sftp = ssh.open_sftp()
 
             # Transfer the file
-            sftp.put(settings.yml, settingsDict['output'])
+            sftp.put('settings.yml', settingsDict['output'])
 
             # Close the SFTP session and the SSH connection
             sftp.close()
