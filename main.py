@@ -47,13 +47,23 @@ def pushUpdate(settingsDict):
             else:
                 raise Exception("No key worked for authentication")
             
-            # Initialize the SCP client
-            with SCPClient(ssh.get_transport()) as scp:
-                # Upload a file from local to remote
-                local_file = 'settings.yml'
-                remote_file = settingsDict['output']
-                scp.put(local_file, remote_file)
-                print(f"File {local_file} uploaded successfully to {remote_file}")
+            # # Initialize the SCP client
+            # with SCPClient(ssh.get_transport()) as scp:
+            #     # Upload a file from local to remote
+            #     local_file = 'settings.yml'
+            #     remote_file = settingsDict['output']
+            #     scp.put(local_file, remote_file)
+            #     print(f"File {local_file} uploaded successfully to {remote_file}")
+
+            # Open an SFTP session
+            sftp = ssh.open_sftp()
+
+            # Transfer the file
+            sftp.put(settings.yml, settingsDict['output'])
+
+            # Close the SFTP session and the SSH connection
+            sftp.close()
+            ssh.close()
         
         except Exception as e:
             print("An error occurred:", e)
