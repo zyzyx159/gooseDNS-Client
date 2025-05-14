@@ -18,17 +18,17 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Create a non-privileged user that the app will run under.
-# See https://docs.docker.com/go/dockerfile-user-best-practices/
-ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "/home/clean" \
-    --shell "/sbin/nologin" \
-    --no-create-home \
-    --uid "${UID}" \
-    clean
+# # Create a non-privileged user that the app will run under.
+# # See https://docs.docker.com/go/dockerfile-user-best-practices/
+# ARG UID=10001
+# RUN adduser \
+#     --disabled-password \
+#     --gecos "" \
+#     --home "/home/clean" \
+#     --shell "/sbin/nologin" \
+#     --no-create-home \
+#     --uid "${UID}" \
+#     clean
 
 RUN apt-get update && apt-get install -y cron openssh-client cron
 
@@ -40,13 +40,13 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python -m pip install -r requirements.txt
 
-# Create cron directories and permissions
-RUN mkdir -p /home/clean/cron && \
-    chown -R clean:clean /home/clean/cron
+# # Create cron directories and permissions
+# RUN mkdir -p /home/clean/cron && \
+#     chown -R clean:clean /home/clean/cron
 
-# Create a directory for the PID file and set permissions
-RUN mkdir -p /var/run/cron && \
-    chown -R clean:clean /var/run/cron
+# # Create a directory for the PID file and set permissions
+# RUN mkdir -p /var/run/cron && \
+#     chown -R clean:clean /var/run/cron
 
 RUN echo "*/5 * * * * python /app/main.py >> /app/cron.log 2>&1" > /etc/cron.d/clean-cron
 RUN chmod 0644 /etc/cron.d/clean-cron
@@ -54,7 +54,7 @@ RUN crontab /etc/cron.d/clean-cron
 CMD ["cron", "-f"]
 
 # Switch to the non-privileged user to run the application.
-USER clean
+# USER clean
 
 # Copy the source code into the container.
 COPY . .
