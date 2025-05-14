@@ -4,6 +4,7 @@
     "appuser",
     "gecos",
     "goosedns",
+    "keygen",
     "nologin",
     "paramiko",
     "pkey",
