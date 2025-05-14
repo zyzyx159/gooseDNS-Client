@@ -2,6 +2,7 @@
   "cSpell.words": [
     "adduser",
     "appuser",
+    "CHROOTDIR",
     "gecos",
     "goosedns",
     "keygen",
@@ -11,6 +12,7 @@
     "PYTHONDONTWRITEBYTECODE",
     "PYTHONUNBUFFERED",
     "pyyaml",
+    "USERHOMEDIR",
     "uvicorn"
   ]
 }
