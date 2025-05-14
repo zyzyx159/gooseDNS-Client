@@ -30,7 +30,7 @@ RUN adduser \
     --uid "${UID}" \
     clean
 
-RUN apt-get update && apt-get install -y cron openssh-client 
+RUN apt-get update && apt-get install -y cron openssh-client cron
 
 # Download dependencies as a separate step to take advantage of Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
