@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Todo.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "Todo"
             }
           }
         ]
@@ -171,7 +171,7 @@
   },
   "active": "814ad1548d7c7c63",
   "lastOpenFiles": [
-    "Todo.md",
-    "README.md"
+    "README.md",
+    "Todo.md"
   ]
 }
